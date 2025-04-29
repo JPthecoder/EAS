@@ -7,23 +7,37 @@ div1.setAttribute("id", "square")
 div1.textContent = "Box";
 container.appendChild(div1);
 
+function createCanvas(){
 const canvas = document.createElement("canvas")
 canvas.setAttribute("id", "canvas")
 canvas.width = 160;
 canvas.height = 160;
 container.appendChild(canvas)
 console.log(canvas.width, canvas.height)
+};
+
+createCanvas();
+
+window.addEventListener("mouseleave", (e)=> {
+        if (isDrawing){
+            drawLine(context, x, y, e.offsetX, e.offsetY);
+            x = 0;
+            y = 0;
+            isDrawing = false;
+        }
+    });
 
 div1.addEventListener("mousemove", newColor);
 
  function newColor(e){
     let target = e.target;
 
-    if (target.id === "square"){
-    div1.style.backgroundColor = "lightblue";
-
+    if (target.id === "canvas"){
+    container.style.backgroundColor = Math.floor(Math.random()*543154);
+    //trying to create random color
 }
 };
+
 function draw(){
     let isDrawing = false;
     let x = 0;
@@ -66,3 +80,12 @@ function draw(){
 
 };
 draw();
+
+function massCreate(){
+    for (i=0; i<15; i++){
+        createCanvas();
+        draw();
+        //draw() is only executing on one div instead of the 16 created
+    }
+};
+massCreate();
