@@ -9,8 +9,8 @@ container.appendChild(div1);*/
 
 const canvas = document.createElement("canvas")
 canvas.setAttribute("id", "canvas1")
-canvas.width = 160;
-canvas.height = 160;
+canvas.width = 560;
+canvas.height = 360;
 document.body.appendChild(canvas)
 console.log(canvas.width, canvas.height)
 
