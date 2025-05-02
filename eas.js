@@ -25,16 +25,6 @@ canvas1.height = 160;
 container.appendChild(canvas1)
 console.log(canvas1.width, canvas1.height)
 
-
-window.addEventListener("mouseleave", (e)=> {
-        if (isDrawing){
-            drawLine(context, x, y, e.offsetX, e.offsetY);
-            x = 0;
-            y = 0;
-            isDrawing = false;
-        }
-    });
-
 container.addEventListener("mousemove", newColor);
 
  function newColor(e){
@@ -46,13 +36,24 @@ container.addEventListener("mousemove", newColor);
 }
 };
 
-    function draw(){
-        const myCanvas = document.getElementById('meCanvas')
+
+function createCanvas(){
+    const canvas = document.createElement("canvas")
+    canvas.setAttribute("id", "meCanvas")
+    canvas.width = 160;
+    canvas.height = 160;
+    container.appendChild(canvas)
+    console.log(canvas.width, canvas.height)
+    };
+    
+    function draw(e){
+            const myCanvas = e.target;
             const context = myCanvas.getContext("2d");
             let isDrawing = false;
             let x = 0;
             let y = 0;
-            myCanvas.addEventListener("mouseover", (e)=>{
+
+            myCanvas.addEventListener("mousedown", (e)=>{
                 x = e.offsetX;
                 y = e.offsetY;
                 isDrawing = true;
@@ -66,14 +67,14 @@ container.addEventListener("mousemove", newColor);
                 }
             });
         
-            window.addEventListener("mouseleave", (e)=> {
+            window.addEventListener("mouseup", (e)=> {
                 if (isDrawing){
                     drawLine(context, x, y, e.offsetX, e.offsetY);
                     x = 0;
                     y = 0;
                     isDrawing = false;
                 }
-            })
+            }) 
         
         function drawLine(context, x1, y1, x2, y2){
             context.beginPath();
@@ -89,24 +90,26 @@ container.addEventListener("mousemove", newColor);
     function massCreate(){
         for (i=0; i<15; i++){
             createCanvas();
-            draw();
-            //draw() is only executing on one div instead of the 16 created
+           //draw() is only executing on one div instead of the 16 created
         }
     };
 
-    let container1 = document.querySelector("#main")
+    const container1 = document.querySelector("#main")
     container1.addEventListener("mouseover", (e) => {
-        let target = e.target;
+        /* let target = e.target;
 
         switch(target.id){
         case 'meCanvas':
             draw();
-            break;
+            break;*/
+    
+        if(e.target.tagName === "CANVAS"){
+            //why does tagName have to be uppercase for it to work?
+            //why is the clicking convention still activated?
+            draw(e);
         }})
             
 
-
-    
     massCreate();
 
     /*
