@@ -53,7 +53,7 @@ function createCanvas(){
             let x = 0;
             let y = 0;
 
-            myCanvas.addEventListener("mousedown", (e)=>{
+            myCanvas.addEventListener("mouseenter", (e)=>{
                 x = e.offsetX;
                 y = e.offsetY;
                 isDrawing = true;
@@ -67,14 +67,14 @@ function createCanvas(){
                 }
             });
         
-            window.addEventListener("mouseup", (e)=> {
+            /*window.addEventListener("mouseup", (e)=> {
                 if (isDrawing){
                     drawLine(context, x, y, e.offsetX, e.offsetY);
                     x = 0;
                     y = 0;
                     isDrawing = false;
                 }
-            }) 
+            }) */
         
         function drawLine(context, x1, y1, x2, y2){
             context.beginPath();
