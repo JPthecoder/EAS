@@ -12,40 +12,14 @@ const canvas = document.createElement("canvas")
 function createCanvas(){
 const canvas = document.createElement("canvas")
 canvas.setAttribute("id", "meCanvas")
-canvas.width = 160;
-canvas.height = 160;
+canvas.width = 16;
+canvas.height = 16;
 container.appendChild(canvas)
 console.log(canvas.width, canvas.height)
 };
 
-const canvas1 = document.createElement("canvas")
-canvas1.setAttribute("id", "canvas1")
-canvas1.width = 160;
-canvas1.height = 160;
-container.appendChild(canvas1)
-console.log(canvas1.width, canvas1.height)
-
-container.addEventListener("mousemove", newColor);
-
- function newColor(e){
-    let target = e.target;
-
-    if (target.id === "canvas"){
-    container.style.backgroundColor = Math.floor(Math.random()*543154);
-    //trying to create random color
-}
-};
 
 
-function createCanvas(){
-    const canvas = document.createElement("canvas")
-    canvas.setAttribute("id", "meCanvas")
-    canvas.width = 160;
-    canvas.height = 160;
-    container.appendChild(canvas)
-    console.log(canvas.width, canvas.height)
-    };
-    
     function draw(e){
             const myCanvas = e.target;
             const context = myCanvas.getContext("2d");
@@ -66,15 +40,19 @@ function createCanvas(){
                 y = e.offsetY;
                 }
             });
+
+            myCanvas.addEventListener("mouseenter", (e)=>{
+                myCanvas.style.backgroundColor = "lightblue";
+            });
         
-            /*window.addEventListener("mouseup", (e)=> {
+            window.addEventListener("mouseleave", (e)=> {
                 if (isDrawing){
                     drawLine(context, x, y, e.offsetX, e.offsetY);
                     x = 0;
                     y = 0;
                     isDrawing = false;
                 }
-            }) */
+            })
         
         function drawLine(context, x1, y1, x2, y2){
             context.beginPath();
@@ -88,74 +66,31 @@ function createCanvas(){
     };
     
     function massCreate(){
-        for (i=0; i<15; i++){
+        for (i=0; i<256; i++){
             createCanvas();
            //draw() is only executing on one div instead of the 16 created
+                //To fix this, an event delegation was added to target canvas element overall
         }
     };
 
     const container1 = document.querySelector("#main")
     container1.addEventListener("mouseover", (e) => {
-        /* let target = e.target;
-
-        switch(target.id){
-        case 'meCanvas':
-            draw();
-            break;*/
-    
         if(e.target.tagName === "CANVAS"){
             //why does tagName have to be uppercase for it to work?
+                //Due to the nature of the DOM, html elements exists as uppercase
             //why is the clicking convention still activated?
+                //The event target wasn't yet added in the code so mouseover wasn't read
             draw(e);
         }})
             
 
     massCreate();
 
-    /*
-    myCanvas.addEventListener("mouseover", (e)=>{
-        x = e.offsetX;
-        y = e.offsetY;
-        isDrawing = true;
-    }); 
-
-    myCanvas.addEventListener("mousemove", (e) => {
-        if (isDrawing){
-            drawLine(context, x, y, e.offsetX, e.offsetY);
-        x = e.offsetX;
-        y = e.offsetY;
-        }
-    });
-
-    window.addEventListener("mouseleave", (e)=> {
-        if (isDrawing){
-            drawLine(context, x, y, e.offsetX, e.offsetY);
-            x = 0;
-            y = 0;
-            isDrawing = false;
-        }
-    }) 
-
-    function drawLine(context, x1, y1, x2, y2){
-        context.beginPath();
-        context.strokeStyle = "black";
-        context.lineWidth = "1";
-        context.moveTo(x1,y1);
-        context.lineTo(x2,y2);
-        context.stroke();
-        context.closePath();
-    }
-
-*/
-
-
-/*
-container.addEventListener("mousemove", drawMe());
-
- function drawMe(e){
-    let target = e.target;
-
-    if (target.id === "canvas"){
-        draw();
-    }
-}; */
+    //Create a responsive version of the sketch is it doesn't lose its shape
+    //Create color background that randomizes rgb
+        //breaking it down
+            //Create color background
+            //Create array to hold colors
+            //Randomize by Array[random.floor/math]
+            //Pair with mouseover as it enters each canvas
+                //possibly store under current parent mouseover
