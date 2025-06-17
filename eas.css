@@ -1,10 +1,38 @@
 #container {
     background-color: tan;
     margin: 0;
+    
 }
 
-#canvas{
+.meCanvas{
     border: 1px solid black;
+     /* transition-property: opacity;
+     transition-duration: 1.5s;
+     transition: 2s; */
+    }
+
+@starting-style {
+    #meCanvas {
+          background-color: transparent;
+        }
+      } 
+
+      
+
+
+#rbutton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+
+#main{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    width:50%;
+    margin:auto;
 }
 
 
