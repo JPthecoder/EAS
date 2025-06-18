@@ -31,13 +31,13 @@ createSquares(4);
 
 // create another div above the drawings container xx
 // create a button to hold in the button container xx
-// Have the button have a prompt asking users how many square
+// Have the button have a prompt asking users how many square xx 
 button.addEventListener("click", prompted);
 
 function prompted(){
 let question = /*Number(window.*/prompt("How many squares would you like to make?", "");
 if (question === null){
-    question.innerText = "Maybe next time" // write a function to cancel
+    question.innerText = "Maybe next time" // prompt is create but still need to figure out how to do null answers and connect prompt to page reset
 }
 }
 // Have the answer of the user reflect the new number of squares on the page
