@@ -35,9 +35,11 @@ createSquares(4);
 button.addEventListener("click", prompted);
 
 function prompted(){
-let question = /*Number(window.*/prompt("How many squares would you like to make?", "");
-if (question === null){
-    question.innerText = "Maybe next time" // prompt is create but still need to figure out how to do null answers and connect prompt to page reset
+let question = Number(window.prompt("How many squares would you like to make?", ""));
+if (isNaN(question)){
+    alert("Error: choose a number") // prompt is create but still need to figure out how to do null answers and connect prompt to page reset
+} else {
+    alert("Great Choice!")
 }
 }
 // Have the answer of the user reflect the new number of squares on the page
