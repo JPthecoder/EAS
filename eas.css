@@ -1,38 +1,13 @@
-#container {
-    background-color: tan;
-    margin: 0;
-    
-}
-
-.meCanvas{
-    border: 1px solid black;
-     /* transition-property: opacity;
-     transition-duration: 1.5s;
-     transition: 2s; */
-    }
-
-@starting-style {
-    #meCanvas {
-          background-color: transparent;
-        }
-      } 
-
-      
-
-
-#rbutton{
+#drawings {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: auto;
+    flex-wrap:wrap;
 }
 
-#main{
-    display: flex;
-    flex-wrap: wrap;
-    align-content: center;
-    width:50%;
-    margin:auto;
+#upper {
+    display:flex;
+    justify-content:center;
 }
 
-
+#square{
+    border: solid black;
+}
