@@ -29,7 +29,15 @@ function createSquares(size){
 createSquares(4);
 
 
-// create another div above the drawings container
-// create a button to hold in the button container
+// create another div above the drawings container xx
+// create a button to hold in the button container xx
 // Have the button have a prompt asking users how many square
+button.addEventListener("click", prompted);
+
+function prompted(){
+let question = /*Number(window.*/prompt("How many squares would you like to make?", "");
+if (question === null){
+    question.innerText = "Maybe next time" // write a function to cancel
+}
+}
 // Have the answer of the user reflect the new number of squares on the page
