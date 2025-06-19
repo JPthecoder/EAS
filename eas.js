@@ -39,7 +39,9 @@ let question = Number(window.prompt("How many squares would you like to make?", 
 if (isNaN(question)){
     alert("Error: choose a number") // prompt is create but still need to figure out how to do null answers and connect prompt to page reset
 } else {
-    alert("Great Choice!")
-}
-}
+    document.body.innerHTML = "";
+    createSquares(question);
+    console.log(createSquares())
+    // need to figure out how to mesh createSquares after clearing the innerHTML
+}};
 // Have the answer of the user reflect the new number of squares on the page
