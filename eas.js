@@ -35,12 +35,20 @@ createSquares(4);
 button.addEventListener("click", prompted);
 
 function prompted(){
-let question = Number(window.prompt("How many squares would you like to make?", ""));
-if (isNaN(question)){
+let question = window.prompt("How many squares would you like to make?");
+if (question === null){
+    alert("Cancelled")
+} else if (isNaN(question)){
     alert("Error: choose a number") // prompt is create but still need to figure out how to do null answers and connect prompt to page reset
+} else if (question === ""){
+    alert("No answer: Input a number")
 } else {
+    let answer = Number(question);
     document.body.innerHTML = "";
     createSquares(question);
+        //my call stack might be presenting inability to call my function
+        //do I need to create a separate function to hold my command?
+            //my page is showing up blank because the arugment is different from my (question) and (size)
     console.log(createSquares())
     // need to figure out how to mesh createSquares after clearing the innerHTML
 }};
