@@ -43,9 +43,9 @@ if (question === null){
 } else if (question === ""){
     alert("No answer: Input a number")
 } else {
-    let answer = Number(question);
-    document.body.innerHTML = "";
-    createSquares(question);
+    let size = Number(question);
+    container.innerHTML = "";
+    createSquares(size);
         //my call stack might be presenting inability to call my function
         //do I need to create a separate function to hold my command?
             //my page is showing up blank because the arugment is different from my (question) and (size)
