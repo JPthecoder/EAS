@@ -1,6 +1,7 @@
 #drawings {
     display: flex;
     flex-wrap:wrap;
+    position: absolute;
 }
 
 #upper {
