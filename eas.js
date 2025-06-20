@@ -57,3 +57,7 @@ if (question === null){
     // need to figure out how to mesh createSquares after clearing the innerHTML
 }};
 // Have the answer of the user reflect the new number of squares on the page
+
+
+// add rgb to the backgroundColor
+backgr
